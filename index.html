@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Web Instituto Iuris Sana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: sereno, profesional, cálido; texto de Ana y del equipo.
+   IDEA: la balanza abrazada, el profesional sostenido mientras sostiene a otros.
+   PICTURE: fotos reales del equipo en arcos celestes.
+   COLOUR and TYPE: guía de marca aprobada (lino, celeste, verde raíz, azul toga); Cormorant Garamond + Jost.
+   LAYOUT: landing de una página: hero, propósito, pilares, píldora, programa 2027, aulas, equipo, contacto. Marca de un solo tema (claro) a propósito. */
+:root{
+  color-scheme:light;
+  --lino:#F7F6F2;--celeste:#A9CCE3;--verde:#005B4C;--azul:#1D3B53;--bruma:#E3EEF5;--salvia:#D5E8E0;
+  --blanco:#FFFFFF;--soft:#4E6273;--line:#D3DDE3;--pend:#8A5A12;--pend-bg:#FBF1DF;--wa:#1F8A4C;
+  --f-serif:"Cormorant Garamond",Garamond,"Times New Roman",serif;
+  --f-sans:"Jost","Century Gothic",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px;overflow-x:clip}
+#equipo{overflow:hidden}
+body{margin:0;background:var(--lino);color:var(--azul);font-family:var(--f-sans);font-size:16.5px;line-height:1.65;overflow-x:clip}
+a{color:inherit}
+img{display:block;max-width:100%}
+.in{max-width:1160px;margin:0 auto;padding-inline:max(20px,4vw)}
+h1,h2,h3,h4{font-family:var(--f-serif);font-weight:500;line-height:1.08;margin:0;text-wrap:balance}
+.acc{font-family:var(--f-serif);font-style:italic;color:var(--verde);font-weight:500}
+.eyebrow{font-size:.78rem;letter-spacing:.06em;font-weight:600;color:var(--verde)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;font:500 .95rem var(--f-sans);border-radius:100px;padding:11px 22px;border:1px solid var(--azul);background:transparent;color:var(--azul);text-decoration:none;cursor:pointer}
+.btn.main{background:var(--verde);border-color:var(--verde);color:#fff}
+.btn.main:hover{background:#00473B}
+.btn:not(.main):hover{background:var(--bruma)}
+.btn.wa{background:var(--wa);border-color:var(--wa);color:#fff}
+.btn.wa:hover{background:#18703D}
+.btn svg{width:18px;height:18px;flex:none}
+:focus-visible{outline:2px solid var(--verde);outline-offset:3px}
+.pend{display:inline-block;font:600 .66rem var(--f-sans);letter-spacing:.04em;color:var(--pend);background:var(--pend-bg);border:1px dashed #D9B36B;border-radius:100px;padding:2px 9px;vertical-align:middle}
+
+.draftbar{background:var(--azul);color:#E9F1F6;font-size:.82rem}
+.draftbar .in{padding-block:7px}
+
+/* Cabecera */
+.site{position:sticky;top:0;z-index:20;background:rgba(247,246,242,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.site .in{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:10px}
+.site .lg{width:186px;--li:var(--azul);--ld:var(--verde)}
+.site nav{display:flex;gap:22px;font-size:.92rem}
+.site nav a{text-decoration:none}
+.site nav a:hover{color:var(--verde)}
+.site .btn{padding:8px 18px;font-size:.88rem}
+
+/* Logo */
+.lg{display:block}
+.lg svg{display:block;width:100%;height:auto;overflow:visible}
+.lg .k{fill:none;stroke:var(--li);stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.lg .a{fill:none;stroke:var(--ld);stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.lg .f{fill:var(--ld)}
+.lg .t1{fill:var(--li);font-family:var(--f-sans);font-weight:500;letter-spacing:6px}
+.lg .t2{fill:var(--li);font-family:var(--f-serif);font-weight:500;letter-spacing:3px}
+
+/* Hero */
+.hero .in{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding-block:56px 64px}
+.hero h1{font-size:clamp(2.4rem,5.2vw,4.1rem);margin:14px 0 22px}
+.hero p.lead{font-size:1.1rem;max-width:52ch;margin:0 0 28px;color:var(--soft)}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.hero .note{margin-top:18px;font-size:.88rem;color:var(--soft)}
+.arch{position:relative;aspect-ratio:4/5;border-radius:999px 999px 8px 8px;background:var(--celeste);overflow:hidden}
+.arch .rings{position:absolute;inset:4% -22% -8% -10%;opacity:.8}
+.arch img{position:absolute;left:3.5%;bottom:0;height:96.5%;width:93%;object-fit:cover;object-position:50% 0;border-radius:999px 999px 0 0}
+.motif svg{width:100%;height:100%;display:block;overflow:visible}
+
+.strip{background:var(--azul);color:#fff}
+.strip .in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 28px;padding-block:16px}
+.strip b{font-family:var(--f-serif);font-weight:500;font-size:1.4rem;font-style:italic;color:var(--celeste)}
+.strip .facts{display:flex;flex-wrap:wrap;gap:6px 22px;font-size:.93rem}
+.strip a{color:#fff;font-weight:500}
+
+section.s{padding-block:84px}
+.head{max-width:740px;margin-bottom:40px}
+.head h2{font-size:clamp(2rem,4vw,3rem);margin-top:10px}
+.head p{color:var(--soft);margin:16px 0 0;max-width:62ch}
+
+.who .in{padding-block:30px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;border-bottom:1px solid var(--line)}
+.who span.t{font-size:.8rem;font-weight:600;color:var(--soft)}
+.who ul{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.who li{font-size:.9rem;border:1px solid var(--line);border-radius:100px;padding:5px 14px;background:var(--blanco)}
+
+.purpose .grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.purpose .txt p{margin:0 0 16px;max-width:60ch}
+blockquote.big{margin:0;font-family:var(--f-serif);font-style:italic;font-size:clamp(1.5rem,2.8vw,2.1rem);line-height:1.2;color:var(--verde);padding-left:24px;border-left:1px solid var(--celeste)}
+.mv{display:grid;gap:14px;margin-top:30px}
+.mv div{background:var(--blanco);border:1px solid var(--line);border-radius:8px;padding:16px 18px}
+.mv b{display:block;font-size:.78rem;letter-spacing:.06em;color:var(--verde);margin-bottom:4px}
+.mv p{margin:0;font-size:.95rem}
+
+.pillars{background:var(--bruma)}
+.pgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.pcard{background:var(--lino);border-radius:8px;padding:26px 22px 24px}
+.pcard .ic{width:52px;height:52px;margin-bottom:16px}
+.pcard h3{font-size:1.5rem;margin-bottom:10px}
+.pcard p{margin:0;font-size:.94rem;color:var(--soft)}
+
+/* Píldora */
+.course{display:grid;grid-template-columns:1.3fr 1fr;border-radius:10px;overflow:hidden;background:var(--blanco);border:1px solid var(--line)}
+.course .body{padding:40px 40px 36px}
+.tag{display:inline-block;font-size:.76rem;letter-spacing:.04em;font-weight:600;background:var(--salvia);color:var(--verde);padding:4px 10px;border-radius:3px}
+.course h3{font-size:clamp(2.1rem,4vw,3rem);margin:16px 0 10px}
+.course .sub{font-size:1.08rem;color:var(--soft);margin:0 0 22px;max-width:56ch}
+.course p{margin:0 0 14px;max-width:60ch}
+.q{font-family:var(--f-serif);font-style:italic;font-size:1.6rem;color:var(--verde);margin:6px 0 22px;line-height:1.2}
+.cq{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0 26px}
+.cq div{border:1px solid var(--line);border-radius:8px;padding:14px 16px;background:var(--lino)}
+.cq b{display:block;font-size:.76rem;letter-spacing:.06em;color:var(--verde)}
+.cq i{display:block;font-family:var(--f-serif);font-size:1.18rem;margin:2px 0 4px}
+.cq span{font-size:.88rem;color:var(--soft);line-height:1.5;display:block}
+.route{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:6px 0 26px;border-top:1px solid var(--azul)}
+.route div{padding:12px 10px 0 0;position:relative;font-size:.86rem;color:var(--soft);line-height:1.4}
+.route div::before{content:"";position:absolute;top:-5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--verde)}
+.route b{display:block;color:var(--azul);font-size:.82rem;letter-spacing:.05em;margin-bottom:2px}
+ul.learn{margin:6px 0 24px;padding:0;list-style:none;display:grid;gap:8px}
+ul.learn li{display:flex;gap:10px;align-items:flex-start}
+.bul{flex:none;width:16px;height:16px;margin-top:5px}
+.teachers{display:flex;flex-wrap:wrap;gap:14px;margin:4px 0 6px}
+.tch{display:flex;align-items:center;gap:10px;font-size:.88rem;line-height:1.35}
+.tch img{width:52px;height:52px;border-radius:50%;object-fit:cover}
+.tch small{display:block;color:var(--soft)}
+.tch.guest{padding:6px 14px 6px 6px;border:1px solid var(--line);border-radius:100px;background:var(--lino)}
+.course aside{background:var(--celeste);display:flex;flex-direction:column;position:relative;overflow:hidden}
+.course aside .ph{flex:1 1 auto;min-height:320px;height:0;object-fit:cover;object-position:50% 0;width:100%}
+.course aside .box{padding:28px 30px 32px;display:flex;flex-direction:column;gap:16px;position:relative}
+.facts dl{margin:0;display:grid;gap:12px}
+.facts dt{font-size:.76rem;letter-spacing:.06em;font-weight:600}
+.facts dd{margin:2px 0 0;font-size:1rem}
+.facts dd small{display:block;font-size:.85rem;color:#2F4C63}
+.price{font-family:var(--f-serif);font-weight:500;font-size:3rem;line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap}
+.price small{font-family:var(--f-sans);font-size:.9rem;font-weight:400}
+.course aside .btn{align-self:flex-start}
+.course aside .alt{font-size:.88rem;margin:0}
+.course aside .alt a{font-weight:500}
+.closing{margin-top:20px;background:var(--verde);color:#fff;border-radius:10px;padding:30px 34px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 30px}
+.closing h3{font-size:clamp(1.9rem,3.6vw,2.6rem);font-style:italic}
+.closing p{margin:0;color:#D9ECE5;font-size:.98rem;max-width:52ch}
+
+/* Programa */
+.program{background:var(--azul);color:#fff}
+.program .eyebrow{color:var(--celeste)}
+.program .head p{color:#C9DAE6}
+.stages{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.stage{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:8px;padding:22px 20px}
+.stage .k{font-size:.76rem;letter-spacing:.06em;color:var(--celeste);font-weight:600}
+.stage h3{font-size:2rem;margin:6px 0 2px}
+.stage .qq{font-family:var(--f-serif);font-style:italic;font-size:1.15rem;color:#E3EEF5;margin:0 0 12px}
+.stage ul{margin:0;padding-left:18px;font-size:.9rem;color:#C9DAE6;line-height:1.55}
+.pform{margin-top:28px;display:grid;grid-template-columns:1fr 1.2fr;gap:30px;align-items:start;background:rgba(255,255,255,.06);border-radius:10px;padding:28px}
+.pform h3{font-size:1.8rem;margin-bottom:8px}
+.pform p{color:#C9DAE6;margin:0 0 16px}
+form.f{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+form.f .full{grid-column:1/-1}
+form.f label{display:grid;gap:4px;font-size:.82rem;font-weight:500}
+form.f input,form.f select,form.f textarea{font:400 16px var(--f-sans);color:var(--azul);background:var(--lino);border:1px solid var(--line);border-radius:6px;padding:10px 12px;width:100%;min-height:44px}
+.program form.f input,.program form.f select{background:#284B66;border-color:#3D6380;color:#fff}
+form.f .btn{justify-self:start}
+.fnote{font-size:.78rem;opacity:.85;margin:0}
+.ok{font-size:.95rem;font-weight:500;color:var(--verde);margin:0}
+.program .ok{color:var(--celeste)}
+
+/* Aulas */
+.gal{display:grid;grid-template-columns:1.1fr 1fr 1fr;grid-template-rows:240px 240px;gap:14px}
+.gal img{width:100%;height:100%;object-fit:cover;border-radius:8px}
+.gal img:first-child{grid-row:1/3}
+.gal img:nth-child(4){grid-column:2/4}
+
+/* Equipo */
+.fgrid{display:grid;grid-template-columns:.9fr 1.1fr;grid-template-areas:"photo head" "photo text";column-gap:60px;align-items:start}
+.fphoto{grid-area:photo;align-self:center}.fhead{grid-area:head;align-self:end}.ftext{grid-area:text}
+.fphoto{position:relative}
+.fphoto img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%;border-radius:999px 999px 8px 8px;position:relative;z-index:2}
+.fmotif{position:absolute;right:-16%;bottom:-12%;width:66%;aspect-ratio:1;z-index:1}
+.fhead h2{font-size:clamp(2.3rem,4.4vw,3.4rem);margin:10px 0 6px}
+.frole{font-size:.86rem;letter-spacing:.04em;font-weight:600;color:var(--verde);margin-bottom:20px}
+.ftext p{margin:0 0 14px;max-width:60ch}
+.fchips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 22px;padding:0;list-style:none}
+.fchips li{font-size:.86rem;border-radius:100px;padding:4px 12px;background:var(--salvia);color:var(--verde)}
+.ftext blockquote{margin:0 0 20px;font-family:var(--f-serif);font-style:italic;font-size:clamp(1.3rem,2.3vw,1.7rem);line-height:1.25;padding-left:22px;border-left:1px solid var(--celeste)}
+.ftext cite{display:block;font-family:var(--f-sans);font-style:normal;font-size:.82rem;color:var(--soft);margin-top:10px}
+.collab{margin-top:70px;padding-top:34px;border-top:1px solid var(--line)}
+.ctitle{font-family:var(--f-sans);font-size:.82rem;font-weight:600;color:var(--soft);margin-bottom:20px}
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.cperson{display:flex;gap:18px;align-items:flex-start}
+.cperson img{width:96px;height:96px;flex:none;border-radius:50%;object-fit:cover}
+.cperson h4{font-size:1.5rem}
+.cperson .rl{font-size:.8rem;letter-spacing:.04em;font-weight:600;color:var(--verde);margin:2px 0 8px}
+.cperson p{margin:0;font-size:.93rem;color:var(--soft)}
+
+.values{background:var(--bruma)}
+.values .in{padding-block:40px;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:baseline;justify-content:center;text-align:center}
+.values span{font-family:var(--f-serif);font-size:1.45rem;font-style:italic}
+.values i{color:var(--verde);font-style:normal}
+
+/* Contacto */
+.contact .grid{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:start}
+.mail{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:18px 0}
+.mail code{font-family:var(--f-sans);font-size:1.12rem;font-weight:500;user-select:all}
+.mail button{font:500 .82rem var(--f-sans);border:1px solid var(--line);background:var(--blanco);color:var(--azul);border-radius:100px;padding:6px 14px;cursor:pointer;min-height:36px}
+.social{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;font-size:.92rem}
+.social a{text-decoration:none;border:1px solid var(--line);border-radius:100px;padding:5px 12px;background:var(--blanco)}
+.contact form.f{background:var(--blanco);border:1px solid var(--line);border-radius:10px;padding:26px}
+
+.wafloat{position:fixed;right:18px;bottom:18px;z-index:30;width:56px;height:56px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(29,59,83,.28)}
+.wafloat svg{width:28px;height:28px}
+
+footer{background:var(--azul);color:#D7E5EE;font-size:.9rem}
+footer .in{padding-block:46px 30px;display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:30px}
+footer .lg{width:220px;--li:#F7F6F2;--ld:var(--celeste);margin-bottom:12px}
+footer h4{font-family:var(--f-sans);margin:0 0 10px;font-size:.8rem;letter-spacing:.06em;color:#fff;font-weight:600}
+footer ul{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+footer a{text-decoration:none}
+footer a:hover{color:#fff}
+footer .bottom{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.15);padding-top:18px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:.82rem}
+
+@media (max-width:960px){
+  .site nav{display:none}
+  .hero .in,.purpose .grid,.contact .grid,.pform{grid-template-columns:1fr;gap:36px}
+  .fgrid{grid-template-columns:1fr;grid-template-areas:"head" "photo" "text";row-gap:28px}
+  .hero .in{padding-block:36px 48px}
+  .arch{max-width:400px;width:100%;justify-self:center}
+  .pgrid,.stages{grid-template-columns:1fr 1fr}
+  .course{grid-template-columns:1fr}
+  .course aside .ph{flex:none;height:auto;min-height:0;aspect-ratio:4/3;object-position:50% 0}
+  .fphoto{max-width:380px;width:100%;justify-self:center}
+  .gal{grid-template-columns:1fr 1fr;grid-template-rows:220px 220px 220px}
+  .gal img:first-child{grid-row:1/3}
+  .gal img:nth-child(4){grid-column:1/3}
+  footer .in{grid-template-columns:1fr 1fr}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  section.s{padding-block:58px}
+  .site .lg{width:148px}.site .btn{padding:8px 14px;font-size:.84rem}
+  .pgrid,.stages,.cgrid,.cq,form.f{grid-template-columns:1fr}
+  .route{grid-template-columns:1fr 1fr;row-gap:18px}
+  .course .body{padding:28px 22px}.course aside .box{padding:24px 22px 28px}
+  .gal{grid-template-columns:1fr;grid-template-rows:none}
+  .gal img,.gal img:first-child,.gal img:nth-child(4){grid-row:auto;grid-column:auto;aspect-ratio:4/3;height:auto}
+  .cperson img{width:76px;height:76px}
+  footer .in{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="draftbar"><div class="in"><b>Borrador para validar.</b> Pendientes marcados en amarillo: enlace de pago de Membersfy, formularios de Membersfy y textos legales.</div></div>
+
+<header class="site"><div class="in">
+  <a href="#inicio" class="lg" data-logo="h" aria-label="Instituto Iuris Sana, inicio"></a>
+  <nav aria-label="Principal"><a href="#instituto">El Instituto</a><a href="#pildora">Píldora formativa</a><a href="#programa">Programa 2027</a><a href="#equipo">Equipo</a><a href="#contacto">Contacto</a></nav>
+  <a class="btn main" href="#pildora">Reservar plaza</a>
+</div></header>
+
+<main id="inicio">
+<section class="hero"><div class="in">
+  <div>
+    <span class="eyebrow">Formación para profesionales del derecho y de la ayuda</span>
+    <h1>Existe otra forma de acompañar los conflictos <span class="acc">sin cargar con ellos.</span></h1>
+    <p class="lead">Formamos y acompañamos a profesionales que trabajan con conflictos, sufrimiento y decisiones difíciles, para que puedan ejercer con rigor, implicación y límites saludables.</p>
+    <div class="ctas">
+      <a class="btn main" href="#pildora">Ver la píldora formativa</a>
+      <a class="btn wa" data-wa="Hola, me gustaría recibir más información sobre el Instituto Iuris Sana." href="#contacto"><span data-ic="wa"></span>Más información por WhatsApp</a>
+    </div>
+    <p class="note">Formación online en directo para España y Latinoamérica.</p>
+  </div>
+  <div class="arch">
+    <div class="rings motif" data-motif="#1D3B53" aria-hidden="true"></div>
+    <img src="img/hero-ana.jpg" alt="Ana Ballester García, fundadora del Instituto Iuris Sana, en una sala de vistas entre las banderas de España y de la Comunitat Valenciana">
+  </div>
+</div></section>
+
+<div class="strip"><div class="in">
+  <b>Próxima formación · El peso invisible de ayudar</b>
+  <div class="facts"><span>Jueves 3 de diciembre de 2026</span><span>18:00 h (España)</span><span>2 h online en directo</span><a href="#pildora">Ver detalles</a></div>
+</div></div>
+
+<div class="who"><div class="in">
+  <span class="t">Para profesionales de</span>
+  <ul><li>Abogacía</li><li>Mediación</li><li>Procuraduría</li><li>Psicología</li><li>Trabajo social</li><li>Otras profesiones de ayuda</li></ul>
+</div></div>
+
+<section class="s purpose" id="instituto"><div class="in">
+  <div class="grid">
+    <div class="head" style="margin:0">
+      <span class="eyebrow">Nuestro propósito</span>
+      <h2>Humanizar la manera de comprender y abordar <span class="acc">los conflictos.</span></h2>
+      <div class="mv">
+        <div><b>Misión</b><p>Formar y acompañar a profesionales del derecho y de la ayuda con autoconocimiento, herramientas prácticas y una comprensión más amplia del conflicto y de su propio lugar en él.</p></div>
+        <div><b>Visión</b><p>Ser un espacio de referencia en la formación de profesionales del derecho y de la ayuda, impulsando una cultura jurídica más humana, consciente y colaborativa.</p></div>
+      </div>
+    </div>
+    <div class="txt">
+      <p>En el Instituto Iuris Sana creemos que existe otra forma de comprender y abordar los conflictos.</p>
+      <p>Detrás de cada conflicto existen relaciones deterioradas, emociones, experiencias personales, necesidades no atendidas y dinámicas familiares u organizacionales que no siempre encuentran respuesta exclusivamente en la aplicación de la norma. Y quien acompaña ese conflicto también se ve afectado por él.</p>
+      <p>Nuestro propósito es contribuir a una justicia más humana, consciente y responsable, formando profesionales capaces de integrar el rigor jurídico con una comprensión profunda de las personas y sus relaciones.</p>
+      <p style="margin-bottom:28px">A través de nuestra formación, la reflexión y la práctica compartida, queremos impulsar una nueva cultura de resolución de conflictos en la que el diálogo, la responsabilidad y el respeto ocupen un lugar esencial.</p>
+      <blockquote class="big">El conocimiento jurídico sigue siendo necesario. Le sumamos una dimensión de conciencia y responsabilidad profesional.</blockquote>
+    </div>
+  </div>
+</div></section>
+
+<section class="s pillars"><div class="in">
+  <div class="head"><span class="eyebrow">Los cuatro pilares</span><h2>Lo que da sentido <span class="acc">al Instituto.</span></h2></div>
+  <div class="pgrid">
+    <article class="pcard"><div class="ic" data-ic="mirada"></div><h3>Una mirada más amplia sobre el conflicto</h3><p>Un conflicto no es únicamente una controversia jurídica. También tiene dimensiones personales, familiares, relacionales, sociales y organizacionales.</p></article>
+    <article class="pcard"><div class="ic" data-ic="prof"></div><h3>El profesional como parte del proceso</h3><p>Mayor conciencia de las propias emociones, creencias, límites y responsabilidades, y de cómo influyen en la intervención profesional.</p></article>
+    <article class="pcard"><div class="ic" data-ic="justicia"></div><h3>Una justicia más humana</h3><p>Formas de intervención que, manteniendo el rigor jurídico, favorecen el diálogo, el respeto y la disminución de la confrontación, sin presuponer que todo conflicto deba terminar en acuerdo.</p></article>
+    <article class="pcard"><div class="ic" data-ic="comunidad"></div><h3>Una comunidad que aprende y se sostiene</h3><p>Un espacio para compartir experiencias, revisar casos, aprender de distintas disciplinas y construir relaciones profesionales de confianza.</p></article>
+  </div>
+</div></section>
+
+<section class="s" id="pildora"><div class="in">
+  <div class="head"><span class="eyebrow">Píldora formativa online</span><h2>Empezamos por <span class="acc">quien ayuda.</span></h2><p>Ayudar puede generar sobreimplicación, culpa, dificultad para desconectar, exceso de disponibilidad y la sensación de que todo depende del profesional. Esta primera sesión pone nombre a lo que nos ocurre.</p></div>
+
+  <article class="course">
+    <div class="body">
+      <span class="tag">1.ª edición · 3 de diciembre de 2026</span>
+      <h3>El peso invisible <span class="acc">de ayudar</span></h3>
+      <p class="sub">Cómo reconocer lo que nos ocurre, acompañar mejor y dejar de cargar con lo que no nos corresponde.</p>
+      <p class="q">¿Desde qué lugar estoy ayudando?</p>
+
+      <div class="cq">
+        <div><b>Conciencia</b><i>¿Qué me está ocurriendo?</i><span>Reconocer señales de desgaste, sobrecarga y fatiga antes de llegar al límite.</span></div>
+        <div><b>Posición</b><i>¿Desde dónde estoy ayudando?</i><span>Distinguir entre salvar, distanciarse y acompañar con presencia, compromiso y límites.</span></div>
+        <div><b>Responsabilidad</b><i>¿Qué es mío y qué no es mío?</i><span>Separar diligencia profesional, influencia y control. Lo propio y lo del cliente.</span></div>
+        <div><b>Desarrollo</b><i>¿Qué necesito trabajar?</i><span>Convertir la conciencia en una dirección práctica: límites, disponibilidad, desconexión y prevención.</span></div>
+      </div>
+
+      <div class="route" aria-label="Recorrido de la sesión">
+        <div><b>Reconocer</b>¿Qué me está pasando?</div>
+        <div><b>Comprender</b>¿Qué factores intervienen?</div>
+        <div><b>Diferenciar</b>¿Qué depende de mí?</div>
+        <div><b>Proyectar</b>¿Qué necesito aprender?</div>
+      </div>
+
+      <p><b>Te llevarás:</b></p>
+      <ul class="learn">
+        <li><span class="bul" data-bul></span>Tu termómetro profesional: con cuánta energía estás ejerciendo hoy.</li>
+        <li><span class="bul" data-bul></span>Una herramienta para separar lo que depende de ti, en lo que puedes influir y lo que no te corresponde.</li>
+        <li><span class="bul" data-bul></span>Tu semáforo profesional para detectar las señales de sobrecarga antes de llegar al límite.</li>
+        <li><span class="bul" data-bul></span>Cinco preguntas para revisar tu forma de ayudar.</li>
+      </ul>
+      <p style="font-size:.93rem;color:var(--soft)">Sesión participativa: microexposiciones, ejercicios individuales, trabajo en grupos pequeños y casos profesionales. Compartir es siempre voluntario. No pretende resolverlo todo, sino generar conciencia y abrir el camino.</p>
+
+      <div class="teachers">
+        <div class="tch"><img src="img/ana-retrato.jpg" alt="Ana Ballester García"><div><b>Ana Ballester García</b><small>Fundadora · Abogada y mediadora</small></div></div>
+        <div class="tch"><img src="img/geni.jpg" alt="María Eugenia Nozal"><div><b>María Eugenia Nozal</b><small>Abogada, mediadora y colaboradora</small></div></div>
+        <div class="tch guest"><img src="img/inma.jpg" alt="Inmaculada Más"><div><b>Inmaculada Más</b><small>Invitada especial · Magistrada del Juzgado n.º 5 de Torrent</small></div></div>
+      </div>
+    </div>
+    <aside class="facts">
+      <img class="ph" src="img/equipo-pildora.jpg" alt="Inmaculada Más, Ana Ballester García y María Eugenia Nozal">
+      <div class="box">
+        <dl>
+          <div><dt>Fecha</dt><dd>Jueves, 3 de diciembre de 2026</dd></div>
+          <div><dt>Hora</dt><dd>18:00 h (España)<small>14:00 Buenos Aires y Santiago · 12:00 Bogotá y Lima · 11:00 Ciudad de México</small></dd></div>
+          <div><dt>Formato</dt><dd>2 h online en directo, con un descanso<small>En la plataforma del Instituto. Grabación disponible para las personas inscritas.</small></dd></div>
+          <div><dt>Acceso</dt><dd>Al inscribirte recibirás un enlace para registrarte en la plataforma y acceder a la sesión.</dd></div>
+        </dl>
+        <div class="price">33 € <small>+ IVA (39,93 €)</small></div>
+        <a class="btn main" data-wa="Hola, quiero reservar mi plaza en la píldora «El peso invisible de ayudar» del 3 de diciembre." href="#contacto">Reservar mi plaza</a>
+        <span class="pend" style="align-self:flex-start">Enlace de pago de Membersfy pendiente: ahora abre WhatsApp</span>
+        <p class="alt">¿Tienes dudas? <a data-wa="Hola, tengo una duda sobre la píldora «El peso invisible de ayudar»." href="#contacto">Escríbenos por WhatsApp</a></p>
+      </div>
+    </aside>
+  </article>
+
+  <div class="closing">
+    <h3>Ayudar sin cargar.</h3>
+    <p>Estar presente sin perderse · acompañar sin rescatar · comprometerse sin cargar.</p>
+  </div>
+</div></section>
+
+<section class="s program" id="programa"><div class="in">
+  <div class="head"><span class="eyebrow">Programa completo · enero y febrero de 2027</span><h2>Un recorrido <span style="font-style:italic;color:var(--celeste)">en cuatro etapas.</span></h2><p>La píldora es el primer paso. El programa completo profundiza en tres talleres online y un taller presencial.</p></div>
+  <div class="stages">
+    <article class="stage"><span class="k">Taller online 1</span><h3>Mirar</h3><p class="qq">¿Qué me está pasando?</p><ul><li>Estrés, burnout y fatiga por compasión</li><li>Perfeccionismo y sobrecarga</li><li>Señales corporales y emocionales</li><li>Equilibrio entre trabajo y vida</li></ul></article>
+    <article class="stage"><span class="k">Taller online 2</span><h3>Ordenar</h3><p class="qq">¿Desde qué lugar estoy ayudando?</p><ul><li>Dar y recibir</li><li>Límites y responsabilidad</li><li>Acompañar sin rescatar</li><li>Relación de adulto a adulto</li></ul></article>
+    <article class="stage"><span class="k">Taller online 3</span><h3>Sostener</h3><p class="qq">¿Cómo lo llevo a mi día a día?</p><ul><li>Disponibilidad y desconexión</li><li>Clientes difíciles</li><li>Tiempo y comunicación</li><li>Plan personal de autocuidado</li></ul></article>
+    <article class="stage"><span class="k">Taller presencial</span><h3>Integrar</h3><p class="qq">Del conocimiento a la experiencia</p><ul><li>Casos profesionales</li><li>Culpa y sobreimplicación</li><li>Clientes que generan rechazo o necesidad de proteger</li><li>Lo que nos llevamos a casa</li></ul></article>
+  </div>
+  <div class="pform">
+    <div>
+      <h3>¿Quieres recibir la información?</h3>
+      <p>Te enviaremos fechas, programa y condiciones en cuanto estén disponibles.</p>
+      <a class="btn wa" data-wa="Hola, me interesa el programa completo de 2027. ¿Me podéis enviar información?" href="#contacto"><span data-ic="wa"></span>Preguntar por WhatsApp</a>
+    </div>
+    <form class="f" data-form="Gracias. Te enviaremos la información del programa en cuanto esté disponible.">
+      <label>Nombre<input id="n1" type="text" required autocomplete="name"></label>
+      <label>Correo electrónico<input id="e1" type="email" required autocomplete="email"></label>
+      <label>Profesión<select id="p1"><option>Abogacía</option><option>Mediación</option><option>Procuraduría</option><option>Psicología</option><option>Trabajo social</option><option>Otra profesión de ayuda</option></select></label>
+      <label>País<input id="c1" type="text" autocomplete="country-name"></label>
+      <button class="btn full" type="submit" style="background:#fff;color:var(--azul);border-color:#fff">Quiero recibir la información</button>
+      <p class="fnote full"><span class="pend">Se sustituirá por el formulario de Membersfy</span></p>
+    </form>
+  </div>
+</div></section>
+
+<section class="s" style="padding-bottom:40px"><div class="in">
+  <div class="head"><span class="eyebrow">En las aulas</span><h2>Formando a profesionales <span class="acc">desde la experiencia.</span></h2><p>Formaciones e intervenciones con el Colegio de la Abogacía de Valencia y la Universidad Europea de Valencia.</p></div>
+  <div class="gal">
+    <img src="img/aula-1.jpg" alt="Ana Ballester impartiendo una formación en un aula" loading="lazy">
+    <img src="img/aula-2.jpg" alt="Ana Ballester, Inmaculada Más y María Eugenia Nozal en la Universidad Europea de Valencia" loading="lazy">
+    <img src="img/aula-3.jpg" alt="Ana Ballester en una ponencia en el Colegio de la Abogacía de Valencia" loading="lazy">
+    <img src="img/aula-4.jpg" alt="Mesa de ponentes en el Colegio de la Abogacía de Valencia" loading="lazy">
+  </div>
+</div></section>
+
+<section class="s" id="equipo"><div class="in">
+  <div class="fgrid">
+    <div class="fphoto">
+      <img src="img/ana-fundadora.jpg" alt="Ana Ballester García en una ponencia en la Universidad Europea de Valencia">
+      <div class="fmotif motif" data-motif="#1D3B53" aria-hidden="true"></div>
+    </div>
+    <div class="fhead">
+      <span class="eyebrow">La fundadora</span>
+      <h2>Ana Ballester García</h2>
+      <div class="frole">Fundadora del Instituto Iuris Sana · Abogada y mediadora</div>
+    </div>
+    <div class="ftext">
+      <p>Ana es abogada del Colegio de la Abogacía de Valencia y mediadora. Desde su práctica diaria con conflictos familiares comprobó que muchas controversias jurídicas no se resuelven solo con la aplicación de la norma: detrás hay relaciones, emociones y dinámicas que también piden ser atendidas.</p>
+      <p>De esa experiencia nace el Instituto Iuris Sana: un espacio para formar y acompañar a profesionales del derecho y de la ayuda mediante otra forma de mirar el conflicto, sin perder el rigor jurídico.</p>
+      <ul class="fchips"><li>Abogacía</li><li>Mediación</li><li>Conflictos familiares</li><li>Formación de profesionales</li></ul>
+      <blockquote>«El Instituto nace de una inquietud profunda: la necesidad de ampliar la manera en que los profesionales comprendemos, abordamos y acompañamos los conflictos humanos.»<cite>Ana Ballester García</cite></blockquote>
+      <a class="btn" href="https://www.anaballestergarcia.com" id="anaweb">Conoce más sobre Ana en anaballestergarcia.com</a>
+    </div>
+  </div>
+
+  <div class="collab">
+    <h3 class="ctitle">Colaboran en el Instituto</h3>
+    <div class="cgrid">
+      <article class="cperson"><img src="img/geni.jpg" alt="María Eugenia Nozal"><div><h4>María Eugenia Nozal</h4><div class="rl">Abogada, mediadora y colaboradora</div><p>Abogada con una larga trayectoria profesional. Participa como formadora en los programas del Instituto.</p></div></article>
+      <article class="cperson"><img src="img/paola.jpg" alt="Paola Rivera"><div><h4>Paola Rivera</h4><div class="rl">CMO · Directora de Marketing</div><p>Licenciada en ADE y máster en Negocios Digitales. Lleva el marketing y la comunicación del Instituto.</p></div></article>
+    </div>
+  </div>
+</div></section>
+
+<div class="values"><div class="in">
+  <span>Rigor</span><i>·</i><span>Humanidad</span><i>·</i><span>Respeto</span><i>·</i><span>Responsabilidad</span><i>·</i><span>Servicio</span><i>·</i><span>Compasión</span><i>·</i><span>Coherencia</span><i>·</i><span>Colaboración</span><i>·</i><span>Aprendizaje continuo</span>
+</div></div>
+
+<section class="s contact" id="contacto"><div class="in">
+  <div class="grid">
+    <div class="head" style="margin:0">
+      <span class="eyebrow">Contacto</span>
+      <h2>Hablemos.</h2>
+      <p>Para dudas sobre las formaciones o colaboraciones con colegios profesionales, universidades o instituciones, escríbenos por WhatsApp o déjanos tu mensaje.</p>
+      <div class="ctas" style="margin-top:22px"><a class="btn wa" data-wa="Hola, me gustaría recibir más información sobre el Instituto Iuris Sana." href="#contacto"><span data-ic="wa"></span>Escribir por WhatsApp</a></div>
+      <div class="mail"><code id="mail">info@institutoiurisana.com</code><button type="button" id="copy">Copiar</button></div>
+      <div class="social"><a href="https://www.instagram.com/instituto_iuris_sana/">Instagram · @instituto_iuris_sana</a><a href="https://www.instagram.com/instituto_iuris_sana/">LinkedIn · Instituto Iuris Sana</a></div>
+    </div>
+    <form class="f" data-form="Gracias por escribirnos. Te responderemos en breve.">
+      <label>Nombre<input id="n3" type="text" required autocomplete="name"></label>
+      <label>Correo electrónico<input id="e3" type="email" required autocomplete="email"></label>
+      <label class="full">Profesión<select id="p3"><option>Abogacía</option><option>Mediación</option><option>Procuraduría</option><option>Psicología</option><option>Trabajo social</option><option>Otra profesión de ayuda</option></select></label>
+      <label class="full">Mensaje<textarea id="m3" rows="5" required></textarea></label>
+      <p class="fnote full">Al enviar aceptas la política de privacidad. <span class="pend">Se sustituirá por el formulario de Membersfy · texto legal pendiente</span></p>
+      <button class="btn main" type="submit">Enviar mensaje</button>
+    </form>
+  </div>
+</div></section>
+</main>
+
+<a class="wafloat" data-wa="Hola, me gustaría recibir más información sobre el Instituto Iuris Sana." href="#contacto" aria-label="Escribir por WhatsApp"><span data-ic="wa"></span></a>
+
+<footer><div class="in">
+  <div><div class="lg" data-logo="h"></div><p style="margin:0;max-width:36ch">Formación para profesionales del derecho y de la ayuda. Online para España y Latinoamérica.</p></div>
+  <div><h4>El Instituto</h4><ul><li><a href="#instituto">Propósito</a></li><li><a href="#pildora">Píldora formativa</a></li><li><a href="#programa">Programa 2027</a></li><li><a href="#equipo">Equipo</a></li><li><a href="#contacto">Contacto</a></li></ul></div>
+  <div><h4>Legal</h4><ul><li><a href="#contacto">Aviso legal</a></li><li><a href="#contacto">Política de privacidad</a></li><li><a href="#contacto">Política de cookies</a></li><li><a href="#contacto">Condiciones de contratación</a></li></ul><p style="margin:10px 0 0;font-size:.82rem">Titular: Ana Ballester García · datos fiscales pendientes</p></div>
+  <div class="bottom"><span>© 2026 Instituto Iuris Sana · institutoiurisana.com</span><span>info@institutoiurisana.com · <a href="https://www.instagram.com/instituto_iuris_sana/">Instagram</a> · <a href="https://www.instagram.com/instituto_iuris_sana/">LinkedIn</a></span></div>
+</div></footer>
+
+<script>
+{
+  /* Configuración: rellenar cuando estén los datos */
+  const WA_NUMBER = '34637557030';  // WhatsApp de Ana
+  const ANA_WEB = 'https://www.anaballestergarcia.com';
+
+  const V = '#005B4C';
+  const sym = '<circle class="f" cx="50" cy="15" r="3.8"/><path class="k" d="M50 21 V68 M22 30 H78 M22 30 L14 47 M22 30 L30 47 M12 47 Q22 57 32 47 M78 30 L70 47 M78 30 L86 47 M68 47 Q78 57 88 47 M42 68 H58"/><path class="a" d="M47 88 C29 88 13 79 9 61 C8 56 10 53 13 54 M53 88 C71 88 87 79 91 61 C92 56 90 53 87 54"/>';
+  const logo = '<svg viewBox="0 0 412 100" role="img" aria-label="Instituto Iuris Sana">' + sym + '<text class="t1" x="116" y="38" font-size="13">INSTITUTO</text><text class="t2" x="113" y="78" font-size="42">IURIS SANA</text></svg>';
+  const motif = c => '<svg viewBox="0 0 100 100"><g fill="none" stroke="' + c + '" stroke-width=".3" stroke-linecap="round"><path d="M50 21 V54 M14 30 H86"/><path d="M6 40 C6 92 94 92 94 40"/><path d="M18 40 C18 78 82 78 82 40"/><path d="M30 40 C30 64 70 64 70 40"/></g><circle cx="50" cy="17" r="2.6" fill="' + V + '"/></svg>';
+  const bul = '<svg viewBox="0 0 20 20"><path d="M2.5 8 C2.5 19.5 17.5 19.5 17.5 8" fill="none" stroke="#A9CCE3" stroke-width="2.2" stroke-linecap="round"/><circle cx="10" cy="8" r="3.6" fill="' + V + '"/></svg>';
+  const IC = {
+    wa: '<svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.2-.3-.2-.5-.3Z"/></svg>',
+    mirada: '<svg viewBox="0 0 52 52"><g fill="none" stroke="#1D3B53" stroke-width="1.2"><circle cx="26" cy="19" r="12"/><circle cx="18" cy="32" r="12"/><circle cx="34" cy="32" r="12"/></g><circle cx="26" cy="28" r="2.4" fill="#005B4C"/></svg>',
+    prof: '<svg viewBox="0 0 52 52"><g fill="none" stroke="#1D3B53" stroke-width="1.2"><circle cx="26" cy="26" r="20"/><circle cx="26" cy="20" r="6"/><path d="M15 38 C15 31 20 28 26 28 S37 31 37 38"/></g><circle cx="46" cy="26" r="2.4" fill="#005B4C"/></svg>',
+    justicia: '<svg viewBox="0 0 52 52"><g fill="none" stroke="#1D3B53" stroke-width="1.2" stroke-linecap="round"><path d="M26 10 V40 M12 16 H40 M12 16 L7 27 M12 16 L17 27 M5 27 Q12 33 19 27 M40 16 L35 27 M40 16 L45 27 M33 27 Q40 33 47 27 M20 40 H32"/></g><circle cx="26" cy="8" r="2.4" fill="#005B4C"/></svg>',
+    comunidad: '<svg viewBox="0 0 52 52"><g fill="none" stroke="#1D3B53" stroke-width="1.2" stroke-linecap="round"><circle cx="26" cy="15" r="5"/><circle cx="12" cy="22" r="4.2"/><circle cx="40" cy="22" r="4.2"/><path d="M16 40 C16 30 21 26 26 26 S36 30 36 40 M4 38 C4 32 8 29 12 29 C14 29 16 30 17.5 31.5 M48 38 C48 32 44 29 40 29 C38 29 36 30 34.5 31.5"/><path d="M6 44 C14 50 38 50 46 44"/></g><circle cx="26" cy="47.5" r="2.4" fill="#005B4C"/></svg>'
+  };
+
+  document.querySelectorAll('[data-logo]').forEach(e => e.innerHTML = logo);
+  document.querySelectorAll('[data-motif]').forEach(e => e.innerHTML = motif(e.dataset.motif));
+  document.querySelectorAll('[data-bul]').forEach(e => e.innerHTML = bul);
+  document.querySelectorAll('[data-ic]').forEach(e => e.innerHTML = IC[e.dataset.ic] || '');
+
+  /* WhatsApp: cada botón lleva su mensaje predefinido */
+  document.querySelectorAll('[data-wa]').forEach(a => {
+    if (WA_NUMBER) {
+      a.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(a.dataset.wa);
+      a.target = '_blank'; a.rel = 'noopener';
+    } else {
+      a.title = 'Número de WhatsApp pendiente';
+    }
+  });
+  if (ANA_WEB) { const w = document.getElementById('anaweb'); w.href = ANA_WEB; w.target = '_blank'; w.rel = 'noopener'; }
+
+  /* Formularios de muestra: se sustituirán por los de Membersfy */
+  document.querySelectorAll('form[data-form]').forEach(f => {
+    f.addEventListener('submit', ev => {
+      ev.preventDefault();
+      const p = document.createElement('p');
+      p.className = 'ok full';
+      p.textContent = f.dataset.form + ' (Borrador: el formulario aún no envía datos.)';
+      f.replaceWith(p);
+    });
+  });
+
+  document.getElementById('copy').addEventListener('click', function () {
+    const t = document.getElementById('mail').textContent, b = this;
+    const done = () => { b.textContent = 'Copiado'; setTimeout(() => b.textContent = 'Copiar', 1600); };
+    const sel = () => { const r = document.createRange(); r.selectNodeContents(document.getElementById('mail')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+    try { navigator.clipboard.writeText(t).then(done, sel); } catch (_) { sel(); }
+  });
+}
+</script>
+</body>
+</html>
